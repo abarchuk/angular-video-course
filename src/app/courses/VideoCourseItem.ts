@@ -15,9 +15,9 @@ export class VideoCourseItem implements CourseItem {
         this.creationDate = new Date();
     }
 
-    toString():string {
-        return this.id + " - " + this.title + " - " + this.duration +
-                " - " + this.description + " - " + this.creationDate;
+    toString(): string {
+        return this.id + ' - ' + this.title + ' - ' + this.duration +
+                ' - ' + this.description + ' - ' + this.creationDate;
     }
 
 }
