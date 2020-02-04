@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { VideoCourseItem } from '../VideoCourseItem';
 import { CourseItem } from '../CourseItem';
 
 @Component({
@@ -9,9 +8,20 @@ import { CourseItem } from '../CourseItem';
 })
 export class CourseListComponent implements OnInit {
   courseList: Array<CourseItem> = [
-    new VideoCourseItem(1, 'Title 1', 11, 'Description 1'),
-    new VideoCourseItem(2, 'Title 2', 22, 'Description 2'),
-    new VideoCourseItem(3, 'Title 3', 33, 'Description 3')
+    {
+      id: 1,
+      title: 'Title 1',
+      duration: 11,
+      description: 'Description 1',
+      creationDate: '2020-02-04T08:43:14.549Z'
+    },
+    {
+      id: 2,
+      title: 'Title 2',
+      duration: 22,
+      description: 'Description 2',
+      creationDate: '2020-02-04T08:43:14.549Z'
+    },
   ];
 
   constructor() { }
