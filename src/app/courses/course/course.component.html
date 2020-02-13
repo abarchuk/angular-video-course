@@ -1,1 +1,14 @@
-<p>{{courseItem.title}}</p>
+<div class="container courseItem">
+    <div class="row">
+        <div class="col-sm">
+            <div class="timeInfo">{{courseItem.creationDate | date:'short'}}</div>
+            <div class="timeInfo">{{courseItem.duration}}</div>
+            <h3>{{courseItem.title}}</h3>
+            <p>{{courseItem.description}}</p>
+        </div>
+        <div class="col- buttonContainer">
+            <button class="btn btn-info" (click)="editClick()"><i class="fa fa-edit"></i> Edit</button>
+            <button class="btn btn-info" (click)="deleteClick()"><i class="fa fa-remove"></i> Delete</button>
+        </div>
+    </div>
+</div>

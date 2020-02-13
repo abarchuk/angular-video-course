@@ -1,1 +1,6 @@
-<p>course-search works!</p>
+<div class="container" id="courseSearchContainer">
+    <div class="form-inline">
+    <input type="text" [(ngModel)]="searchTerm" class="form-control" />
+    <button (click)="onSearchClick()" class="btn btn-success">Search</button>
+    </div>
+</div>
