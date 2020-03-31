@@ -1,9 +1,10 @@
-<div class="container courseItem">
+<div class="container courseItem" [appDateHighlight]="courseItem.creationDate"
+        [ngClass]="{'topRated': courseItem.topRated}">
     <div class="row">
         <div class="col-sm">
-            <div class="timeInfo">{{courseItem.creationDate | date:'short'}}</div>
-            <div class="timeInfo">{{courseItem.duration}}</div>
-            <h3>{{courseItem.title}}</h3>
+            <div class="timeInfo">{{courseItem.creationDate | date:'d MMMM, y'}}</div>
+            <div class="timeInfo">{{courseItem.duration | courseDuration }}</div>
+            <span class="title">{{courseItem.title | uppercase}}</span><i class="fa fa-star" *ngIf="courseItem.topRated"></i>
             <p>{{courseItem.description}}</p>
         </div>
         <div class="col- buttonContainer">

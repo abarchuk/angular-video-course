@@ -1,12 +1,17 @@
 <div id="courseListContainer">
     <div class="container">
-        <app-course-search></app-course-search>
+        <app-course-search (doSearch)="searchByName($event)"></app-course-search>
         <div class="container" id="addCourseContainer">
             <button class="btn btn-info">+ Add Course</button>
         </div>
-        <app-course *ngFor="let course of courseList" [courseItem]="course" (deleteCourse)='deleteVideo($event)'></app-course>
-        <div class="container" id="loadMoreContainer">
-            <a href="#">Load more</a>
-        </div>
+        <ng-template [ngIf]="courseList.length > 0" [ngIfElse]="noCourses">
+            <app-course *ngFor="let course of (filteredCourseList | courseOrder)" [courseItem]="course" (deleteCourse)='deleteVideo($event)'></app-course>
+            <div class="container" id="loadMoreContainer">
+                <a href="#">Load more</a>
+            </div>
+        </ng-template>
+        <ng-template #noCourses>
+            <div id="noDataMsg">No data. Feel free to add a new course.</div>
+        </ng-template>
     </div>
 </div>
