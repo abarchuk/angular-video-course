@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainContentComponent } from './main-content.component';
+import { BreadcrumbsComponent } from '../breadcrumbs/breadcrumbs.component';
+import { CoursesModule } from 'src/app/courses/courses.module';
 
 describe('MainContentComponent', () => {
   let component: MainContentComponent;
@@ -8,7 +10,8 @@ describe('MainContentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainContentComponent ]
+      declarations: [ MainContentComponent, BreadcrumbsComponent ],
+      imports: [ CoursesModule ]
     })
     .compileComponents();
   }));

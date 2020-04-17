@@ -6,5 +6,6 @@ export class VideoCourseItem implements CourseItem {
     duration: number;
     description: string;
     creationDate: string;
+    topRated: boolean;
 }
 
