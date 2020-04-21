@@ -1,55 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { CourseItem } from '../CourseItem';
+import { CourseService } from '../services/course.service';
+import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
-  styleUrls: ['./course-list.component.scss']
+  styleUrls: ['./course-list.component.scss'],
+  providers: [CourseService]
 })
 export class CourseListComponent implements OnInit {
+  @ViewChild('deleteModal', {static: false}) deleteModal: TemplateRef<any>;
   filteredCourseList: Array<CourseItem>;
   courseList: Array<CourseItem>;
+  modalOptions: NgbModalOptions;
 
-  constructor() { }
+  constructor(private courseService: CourseService,
+              private modalService: NgbModal) {
+      this.modalOptions = {
+        centered: true
+      };
+    }
 
   ngOnInit() {
-    this.courseList = [
-      {
-        id: 1,
-        title: 'Title 1',
-        duration: 111,
-        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-        enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-        ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-        qui officia deserunt mollit anim id est laborum.`,
-        creationDate: '2020-04-19T08:43:14.549Z',
-        topRated: false
-      },
-      {
-        id: 2,
-        title: 'Title 2',
-        duration: 222,
-        description: 'Description 2',
-        creationDate: '2020-02-04T08:43:14.549Z',
-        topRated: false
-      },
-      {
-        id: 3,
-        title: 'Title 3',
-        duration: 33,
-        description: 'Description 3',
-        creationDate: '2020-03-30T08:43:14.549Z',
-        topRated: true
-      }
-    ];
+    this.courseList = this.courseService.getList();
     this.resetCourseFilter();
   }
 
-  deleteVideo(courseId: number) {
-    console.log(`delete clicked: ${courseId}`);
+  deleteVideo(item: CourseItem) {
+    this.modalService.open(this.deleteModal, this.modalOptions).result.then((result) => {
+      if (result === 'delete') {
+        this.courseService.remove(item);
+        this.courseList = this.courseService.getList();
+        this.resetCourseFilter();
+      }
+    });
   }
 
   resetCourseFilter() {

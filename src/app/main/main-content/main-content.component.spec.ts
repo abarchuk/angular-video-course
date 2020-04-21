@@ -3,6 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MainContentComponent } from './main-content.component';
 import { BreadcrumbsComponent } from '../breadcrumbs/breadcrumbs.component';
 import { CoursesModule } from 'src/app/courses/courses.module';
+import { LoginComponent } from '../login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 describe('MainContentComponent', () => {
   let component: MainContentComponent;
@@ -10,8 +13,9 @@ describe('MainContentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainContentComponent, BreadcrumbsComponent ],
-      imports: [ CoursesModule ]
+      declarations: [ MainContentComponent, BreadcrumbsComponent, LoginComponent ],
+      imports: [ CoursesModule, ReactiveFormsModule ],
+      providers: [ AuthService ]
     })
     .compileComponents();
   }));

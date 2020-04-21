@@ -14,4 +14,19 @@
             <div id="noDataMsg">No data. Feel free to add a new course.</div>
         </ng-template>
     </div>
+    <ng-template #deleteModal let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title">Delete confirmation</h4>
+          <button type="button" class="close" (click)="modal.dismiss()">
+            <span>×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete the course?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('delete')">Ok</button>
+          <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss()">Cancel</button>
+        </div>
+      </ng-template>
 </div>

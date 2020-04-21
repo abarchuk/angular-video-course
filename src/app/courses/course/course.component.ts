@@ -8,7 +8,7 @@ import { CourseItem } from '../CourseItem';
 })
 export class CourseComponent implements OnInit, OnChanges {
   @Input() courseItem: CourseItem;
-  @Output() deleteCourse: EventEmitter<number> = new EventEmitter();
+  @Output() deleteCourse: EventEmitter<CourseItem> = new EventEmitter();
 
   constructor() { }
 
@@ -21,7 +21,7 @@ export class CourseComponent implements OnInit, OnChanges {
   }
 
   deleteClick() {
-      this.deleteCourse.emit(this.courseItem.id);
+      this.deleteCourse.emit(this.courseItem);
   }
 
   editClick() {
