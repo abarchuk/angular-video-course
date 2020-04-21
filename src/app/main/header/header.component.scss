@@ -1,6 +1,7 @@
 #headerContainer {
     width: 100%;
     background-color: #bbb;
+    min-height: 4em;
 }
 
 #header {
@@ -14,5 +15,10 @@
 
 #userName {
     padding-right: 1em;
+}
+
+.logout {
+    cursor: pointer;
+    color: royalblue;
 }
 
