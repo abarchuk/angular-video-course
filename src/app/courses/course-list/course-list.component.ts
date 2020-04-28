@@ -1,13 +1,13 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { CourseItem } from '../CourseItem';
 import { CourseService } from '../services/course.service';
 import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
-import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [CourseService]
 })
 export class CourseListComponent implements OnInit {

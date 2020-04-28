@@ -17,7 +17,7 @@
     <ng-template #deleteModal let-modal>
         <div class="modal-header">
           <h4 class="modal-title">Delete confirmation</h4>
-          <button type="button" class="close" (click)="modal.dismiss()">
+          <button type="button" class="close" (click)="modal.close()">
             <span>×</span>
           </button>
         </div>
@@ -26,7 +26,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-dark" (click)="modal.close('delete')">Ok</button>
-          <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss()">Cancel</button>
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Cancel</button>
         </div>
       </ng-template>
 </div>

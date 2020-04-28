@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-course-search',
   templateUrl: './course-search.component.html',
-  styleUrls: ['./course-search.component.scss']
+  styleUrls: ['./course-search.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CourseSearchComponent implements OnInit {
   @Input() searchTerm = '';

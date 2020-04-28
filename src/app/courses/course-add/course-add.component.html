@@ -1,0 +1,41 @@
+<div class="addCourseContainer">
+    <div class="container">
+        <form [formGroup]="addCourseForm" (ngSubmit)="addCourse()">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" class="form-control" formControlName="title">
+                <div *ngIf="addCourseFormSubmitted && addCourseForm.controls.title.errors?.required"
+                    class="invalid-feedback">
+                    Title is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" formControlName="description"></textarea>
+                <div *ngIf="addCourseFormSubmitted && addCourseForm.controls.description.errors?.required"
+                    class="invalid-feedback">
+                    Description is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="creationDate">Date</label>
+                <input type="text" id="creationDate" class="form-control date" formControlName="creationDate">
+                <div *ngIf="addCourseFormSubmitted && addCourseForm.controls.creationDate.errors?.required"
+                    class="invalid-feedback">
+                    Date is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration</label>
+                <input type="text" id="duration" class="form-control date" formControlName="duration">
+                <span class="durationDescription">{{addCourseForm.controls.duration.value | courseDuration}}</span>
+                <div *ngIf="addCourseFormSubmitted && addCourseForm.controls.duration.errors?.required"
+                    class="invalid-feedback">
+                    Duration is required.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info">Save</button>
+            <button type="button" class="btn btn-info cancel">Cancel</button>
+        </form>
+    </div>
+</div>
