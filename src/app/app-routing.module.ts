@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainContentComponent } from './main/main-content/main-content.component';
+import { NotFoundComponent } from './main/not-found/not-found.component';
+import { LoginComponent } from './main/login/login.component';
 
 const routes: Routes = [
-  { path: 'courses', component: MainContentComponent },
-  { path: '', redirectTo: '/courses', pathMatch: 'full' }
+  { path: 'login', component: LoginComponent },
+  { path: 'courses',
+    loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule)
+  },
+  { path: '', redirectTo: 'courses', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

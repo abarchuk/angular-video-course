@@ -2,7 +2,7 @@
     <div class="container">
         <app-course-search (doSearch)="searchByName($event)"></app-course-search>
         <div class="container" id="addCourseContainer">
-            <button class="btn btn-info">+ Add Course</button>
+            <button class="btn btn-info" (click)="addCourse()">+ Add Course</button>
         </div>
         <ng-template [ngIf]="courseList.length > 0" [ngIfElse]="noCourses">
             <app-course *ngFor="let course of (filteredCourseList | courseOrder)" [courseItem]="course" (deleteCourse)='deleteVideo($event)'></app-course>

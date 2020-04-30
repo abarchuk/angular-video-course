@@ -1,0 +1,8 @@
+<div class="breadcrumbsContainer">
+    <div class="container">
+        <ng-template ngFor let-link let-last="last" [ngForOf]="menuItems">
+            <a [routerLink]="link.url">{{link.label}}</a>
+            <span *ngIf="!last" class="linkSeparator">/</span>
+        </ng-template>
+    </div>
+</div>

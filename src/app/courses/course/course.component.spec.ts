@@ -4,6 +4,7 @@ import { CourseComponent } from './course.component';
 import { DateHighlightDirective } from '../directives/date-highlight.directive';
 import { CourseDurationPipe } from '../pipes/course-duration.pipe';
 import { VideoCourseItem } from '../VideoCourseItem';
+import { Router } from '@angular/router';
 
 describe('CourseComponent', () => {
   let component: CourseComponent;
@@ -11,9 +12,17 @@ describe('CourseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CourseComponent,
+      declarations: [
+        CourseComponent,
         DateHighlightDirective,
-        CourseDurationPipe ]
+        CourseDurationPipe
+      ],
+      providers: [
+        {
+          provide: Router,
+          useClass: class { navigate = jasmine.createSpy('navigate'); }
+        }
+      ]
     })
     .compileComponents();
   }));

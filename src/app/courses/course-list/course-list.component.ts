@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild, ChangeDetectionStrategy } fr
 import { CourseItem } from '../CourseItem';
 import { CourseService } from '../services/course.service';
 import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-list',
@@ -17,7 +18,8 @@ export class CourseListComponent implements OnInit {
   modalOptions: NgbModalOptions;
 
   constructor(private courseService: CourseService,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private router: Router) {
       this.modalOptions = {
         centered: true
       };
@@ -50,6 +52,10 @@ export class CourseListComponent implements OnInit {
     } else {
       this.resetCourseFilter();
     }
+  }
+
+  addCourse() {
+    this.router.navigate(['courses', 'new']);
   }
 
 }

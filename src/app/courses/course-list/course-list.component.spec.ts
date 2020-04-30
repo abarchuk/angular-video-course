@@ -7,6 +7,7 @@ import { CourseOrderPipe } from '../pipes/course-order.pipe';
 import { FormsModule } from '@angular/forms';
 import { DateHighlightDirective } from '../directives/date-highlight.directive';
 import { CourseDurationPipe } from '../pipes/course-duration.pipe';
+import { Router } from '@angular/router';
 
 describe('CourseListComponent', () => {
   let component: CourseListComponent;
@@ -20,7 +21,13 @@ describe('CourseListComponent', () => {
         CourseOrderPipe,
         DateHighlightDirective,
         CourseDurationPipe ],
-      imports: [ FormsModule ]
+      imports: [ FormsModule ],
+      providers: [
+          {
+            provide: Router,
+            useClass: class { navigate = jasmine.createSpy('navigate'); }
+          }
+      ]
     })
     .compileComponents();
   }));

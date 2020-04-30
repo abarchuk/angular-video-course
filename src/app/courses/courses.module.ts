@@ -7,7 +7,10 @@ import { CourseSearchComponent } from './course-search/course-search.component';
 import { DateHighlightDirective } from './directives/date-highlight.directive';
 import { CourseDurationPipe } from './pipes/course-duration.pipe';
 import { CourseOrderPipe } from './pipes/course-order.pipe';
-import { CourseAddComponent } from './course-add/course-add.component';
+import { CourseEditComponent } from './course-edit/course-edit.component';
+import { CourseRoutingModule } from './course-routing.module';
+import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
+import { CourseContentComponent } from './course-content/course-content.component';
 
 
 
@@ -19,15 +22,15 @@ import { CourseAddComponent } from './course-add/course-add.component';
     DateHighlightDirective,
     CourseDurationPipe,
     CourseOrderPipe,
-    CourseAddComponent
+    CourseEditComponent,
+    BreadcrumbsComponent,
+    CourseContentComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
-  ],
-  exports: [
-    CourseListComponent
+    ReactiveFormsModule,
+    CourseRoutingModule
   ]
 })
 export class CoursesModule { }

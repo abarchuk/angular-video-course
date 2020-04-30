@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CourseUser } from '../CourseUser';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class AuthService {
     login(username: string, password: string) {
         const user = new CourseUser(1, 'John', 'Doe', username);

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CourseItem } from '../CourseItem';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course',
@@ -11,7 +12,7 @@ export class CourseComponent implements OnInit, OnChanges {
   @Input() courseItem: CourseItem;
   @Output() deleteCourse: EventEmitter<CourseItem> = new EventEmitter();
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     console.log(`course init: ${this.courseItem.title}`);
@@ -26,7 +27,7 @@ export class CourseComponent implements OnInit, OnChanges {
   }
 
   editClick() {
-      console.log('edit clicked');
+      this.router.navigate(['courses', this.courseItem.id]);
   }
 
 }
