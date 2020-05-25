@@ -5,9 +5,9 @@
             <button class="btn btn-info" (click)="addCourse()">+ Add Course</button>
         </div>
         <ng-template [ngIf]="courseList.length > 0" [ngIfElse]="noCourses">
-            <app-course *ngFor="let course of (filteredCourseList | courseOrder)" [courseItem]="course" (deleteCourse)='deleteVideo($event)'></app-course>
+            <app-course *ngFor="let course of (courseList | courseOrder)" [courseItem]="course" (deleteCourse)='deleteVideo($event)'></app-course>
             <div class="container" id="loadMoreContainer">
-                <a href="#">Load more</a>
+                <button class="btn btn-info" (click)="loadMoreCourses()">Load More</button>
             </div>
         </ng-template>
         <ng-template #noCourses>

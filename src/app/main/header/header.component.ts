@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -14,17 +14,24 @@ export class HeaderComponent implements OnInit {
   loginUrl = '/login';
 
   constructor(private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.isAuth = this.authService.isAuthenticated();
-    if (this.isAuth) {
-      this.userName = this.authService.getUserInfo();
-    }
+    this.authService.loginEvents.subscribe(() => {
+      this.isAuth = true;
+      this.authService.getUserInfo().then((user) => {
+        this.userName = user;
+        this.changeDetectorRef.markForCheck();
+      });
+    });
   }
 
   logOut() {
     this.authService.logout();
+    this.userName = '';
+    this.isAuth = false;
     this.router.navigate([this.loginUrl]);
   }
 

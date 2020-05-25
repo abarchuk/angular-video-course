@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
   onLogin(data) {
     this.formSubmitted = true;
     if (this.loginForm.valid) {
-      this.authService.login(this.username.value, this.password.value);
-      this.router.navigate([this.defaultUrl]);
+      this.authService.login(this.username.value, this.password.value)
+        .then((result) => this.router.navigate([this.defaultUrl]));
     }
   }
 

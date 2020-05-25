@@ -8,19 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./course.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CourseComponent implements OnInit, OnChanges {
+export class CourseComponent {
   @Input() courseItem: CourseItem;
   @Output() deleteCourse: EventEmitter<CourseItem> = new EventEmitter();
 
   constructor(private router: Router) { }
-
-  ngOnInit() {
-    console.log(`course init: ${this.courseItem.title}`);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
 
   deleteClick() {
       this.deleteCourse.emit(this.courseItem);

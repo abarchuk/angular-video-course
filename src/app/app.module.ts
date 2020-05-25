@@ -5,7 +5,19 @@ import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NotifierModule, NotifierOptions } from 'angular-notifier';
 
+
+const notifierOptions: NotifierOptions = {
+  position: {
+		horizontal: {
+			position: 'middle'
+		},
+		vertical: {
+			position: 'top'
+		}
+	}
+};
 
 @NgModule({
   declarations: [
@@ -15,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     MainModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    NotifierModule.withConfig(notifierOptions)
   ],
   providers: [],
   bootstrap: [AppComponent]

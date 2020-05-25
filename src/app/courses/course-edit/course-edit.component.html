@@ -1,6 +1,6 @@
 <div class="addCourseContainer">
     <div class="container">
-        <form [formGroup]="addCourseForm" (ngSubmit)="addCourse()">
+        <form *ngIf="addCourseForm" [formGroup]="addCourseForm" (ngSubmit)="addCourse()">
             <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" id="title" class="form-control" formControlName="title">

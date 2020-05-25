@@ -6,7 +6,8 @@ import { CoursesModule } from '../courses/courses.module';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from './services/interceptors';
 
 
 @NgModule({
@@ -19,11 +20,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
   imports: [
     CommonModule,
     CoursesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent
+  ],
+  providers: [
+    httpInterceptorProviders
   ]
 })
 export class MainModule { }
